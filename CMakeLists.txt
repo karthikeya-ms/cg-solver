@@ -68,3 +68,6 @@ endif()
 
 add_executable(cg_driver apps/cg_driver.cpp)
 target_link_libraries(cg_driver PRIVATE cgsolver)
+
+add_executable(cg_benchmark apps/cg_benchmark.cpp)
+target_link_libraries(cg_benchmark PRIVATE cgsolver)

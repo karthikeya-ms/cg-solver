@@ -16,3 +16,10 @@ Makefile
 # Editor / OS
 .vscode/
 .DS_Store
+
+# Profiling artifacts
+profiles/
+*.nsys-rep
+*.sqlite
+*_export
+
