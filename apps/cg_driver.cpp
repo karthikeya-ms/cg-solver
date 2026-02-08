@@ -32,5 +32,27 @@ int main() {
     }
     std::cout << "]\n";
 
+    if (cg::gpu_backend_available()) {
+        const cg::CGResult gpu_result =
+            cg::solve_conjugate_gradient_gpu(A, b, options);
+
+        std::cout << "\n[GPU]\n";
+        std::cout << "Converged: " << gpu_result.converged << '\n';
+        std::cout << "Iterations: " << gpu_result.iterations << '\n';
+        std::cout << "Residual norm: " << std::setprecision(12)
+                  << gpu_result.residual_norm << '\n';
+        std::cout << "x = [";
+        for (std::size_t i = 0; i < gpu_result.x.size(); ++i) {
+            std::cout << gpu_result.x[i];
+            if (i + 1 != gpu_result.x.size()) {
+                std::cout << ", ";
+            }
+        }
+        std::cout << "]\n";
+    } else {
+        std::cout << "\n[GPU]\n";
+        std::cout << "CUDA backend unavailable in this build/runtime.\n";
+    }
+
     return result.converged ? 0 : 1;
 }

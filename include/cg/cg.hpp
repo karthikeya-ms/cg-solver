@@ -25,4 +25,12 @@ CGResult solve_conjugate_gradient(
     const CGOptions& options = {},
     const std::vector<double>& x0 = {});
 
+bool gpu_backend_available();
+
+CGResult solve_conjugate_gradient_gpu(
+    const CSRMatrix& A,
+    const std::vector<double>& b,
+    const CGOptions& options = {},
+    const std::vector<double>& x0 = {});
+
 }  // namespace cg
